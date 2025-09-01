@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crypto Signal Dashboard</title>
+  <style>
+    body { font-family: Arial; background: #111; color: #eee; }
+    .card { background: #222; padding: 10px; margin: 10px; border-radius: 5px; }
+    .buy { color: lime; } .sell { color: red; } .natural { color: gray; }
+  </style>
+</head>
+<body>
+  <h1>📈 Crypto Signal Dashboard</h1>
+  {% for key, signals in signal_cache.items() %}
+    <div class="card">
+      <h2>{{ key[0].upper() }} @ {{ key[1] }}</h2>
+      <ul>
+        {% for name, status in signals.items() %}
+          <li class="{{ status }}">{{ name }} → {{ status }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</body>
+</html>
